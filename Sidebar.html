@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+
+<section class="sidebar">
+  <div class="block">
+    <h1 style="text-align:center">
+      Information needed to subdivide the main Slide
+    </h1>
+  </div>
+  
+  <div class="form-group">
+  Choose what slide you want to subdivide:
+    <input type="number" id="Mind-Map-Slide-Number" min="1" style="width:20%"><br>
+    <br>
+  Paste the URL of iamge for the "Back Button Icon":
+    <input type="url" id="Image-Url" style="width:100%"><br>
+    <br>
+  How many new slides do you want?
+  Note: The program will ask you for the title of each one, be prepared!
+    <input type="number" id="Sub-Topics-Number" min="1" style="width:20%"><br>
+  </div><br>
+ 
+  <div class="block">
+    <button type="button" class="blue" onclick="infoSubmit()">Submit</button>
+    <button onclick="closeSidebar()">Cancel</button>
+  </div>
+ 
+</section>
+
+<footer class="bottom">
+
+  <p>
+  <a class= "block" href="http://organic-learning.education" target="_blank">
+<img alt="#OrganicLearning" height="404%" width="50%" src="http://organic-learning.education/wp-content/uploads/2017/08/logo-green-transparent.png"> </a>
+	</p>
+  <p>Contact: <a href="mailto:info@organic-learning.education">
+  info@organic-learning.education</a>.</p>
+</footer>
+
+<script>
+
+function infoSubmit() {
+  var mindMapSlide = document.getElementById('Mind-Map-Slide-Number').value;
+  var imageUrl = document.getElementById('Image-Url').value;
+  var subtopicNumber = document.getElementById('Sub-Topics-Number').value;
+ 
+  
+  google.script.run
+    .withSuccessHandler(closeSidebar)
+    .withFailureHandler(showError)
+    .createSubSlides(mindMapSlide, imageUrl,subtopicNumber);
+}
+
+function closeSidebar() {
+  google.script.host.close();
+}
+
+function showError(err) {
+  console.log(err);
+}
+
+</script>
+
