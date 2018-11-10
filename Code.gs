@@ -19,14 +19,24 @@ function onOpen(e) {
     .addItem('Back button from an Image in Drive or Uploading one', 'openPickerImage')
     .addItem('Back button from image URL', 'openSidebar')
     .addSeparator()
-    .addItem('Help','help')
+    .addItem('Contact','contact')
     //.addSubMenu(SlidesApp.getUi().createMenu('My sub-menu')
            //.addItem('Sub-themes', 'numbersubtopics')
     .addToUi();
 }
 
-function onInstall() {
-  onInstall();
+function onInstall(e) {
+  SlidesApp.getUi()
+    //.createAddonMenu()
+    .createMenu('OrganicLearningResource')
+    .addItem('Back button from Google Drawings', 'openPickerDrawing')
+    .addItem('Back button from an Image in Drive or Uploading one', 'openPickerImage')
+    .addItem('Back button from image URL', 'openSidebar')
+    .addSeparator()
+    .addItem('Contact','contact')
+    //.addSubMenu(SlidesApp.getUi().createMenu('My sub-menu')
+           //.addItem('Sub-themes', 'numbersubtopics')
+    .addToUi();
 }
 
 function openPickerDrawing() {
@@ -387,9 +397,9 @@ function createSubSlides(menuIndex,backButtonIcon,subtopics) {
   } 
 }
 
-function help(){
-  var html = HtmlService.createHtmlOutputFromFile('help')
-    .setTitle('Help');
+function contact(){
+  var html = HtmlService.createHtmlOutputFromFile('contact')
+    .setTitle('Contact');
   SlidesApp.getUi().showModalDialog(html, ' ')  
   //SlidesApp.getUi().showSidebar(html);
 }
